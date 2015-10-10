@@ -139,7 +139,4 @@ private:
 
 private:
 	static void updateDistances(MapTile** tiles, int size, MapPosition *pPos);
-
-	
-
 };
