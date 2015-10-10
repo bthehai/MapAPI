@@ -19,7 +19,7 @@ protected:
 	TileSource(int zoomMin, int zoomMax) : m_nZoomMin(m_nZoomMin), m_nZoomMax(zoomMax) {}
 
 public:
-	TileSource(Builder builder) {
+	TileSource(Builder builder) {}
 
 
 };

@@ -13,3 +13,9 @@
 20151005 1100:
 - Complete TileRenderer class.
 - Rename class ScanBoxImpl -> ScanBoxTileManager in TileManager class.
+
+20151010:
+- Complete:
+	+ ITileCache
+	+ ITileDataSink
+	+ ITileDataSource
