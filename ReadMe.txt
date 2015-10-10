@@ -19,3 +19,4 @@
 	+ ITileCache
 	+ ITileDataSink
 	+ ITileDataSource
+	+ TileSource
