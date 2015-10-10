@@ -16,7 +16,14 @@
 
 20151010:
 - Complete:
-	+ ITileCache
+	MapApi/tiling folder
+	+ ITileCache 
 	+ ITileDataSink
 	+ ITileDataSource
 	+ TileSource
+	MapApi/layers/tile folder
+	+ TileLoader
+
+- Pauseable extends Thread (Thread undefine, don't chosed thread class in unknown library(boost, lib c++...))
+- PasuableThread class: The method or operation is not implemented.
+
