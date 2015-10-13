@@ -55,5 +55,7 @@ private:
 
 	ScanBox *m_pScanBox;
 
+public:
+	static long getMinFade(MapTile *pTile, int proxyLevel);
 	
 };

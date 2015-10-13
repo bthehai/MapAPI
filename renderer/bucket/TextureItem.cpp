@@ -13,6 +13,7 @@ TextureItem::TexturePool::TexturePool( int maxFill, int width, int height )
 	m_nWidth = width;
 	m_bUseBitmapPool = true;
 	m_nTexCnt = 0;
+	
 }
 
 TextureItem::TexturePool::TexturePool(int maxFill) 
@@ -177,6 +178,7 @@ void TextureItem::init( TexturePool *pPool, int id, int w, int h, bool repeat )
 	this->used = 0;
 	this->loaded = false;
 	this->offset = 0;
+	this->indices = 0;
 }
 
 

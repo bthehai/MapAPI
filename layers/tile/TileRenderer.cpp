@@ -5,6 +5,8 @@
 #include "MapTile.h"
 #include "..\..\renderer\BufferObject.h"
 #include "..\..\renderer\bucket\RenderBuckets.h"
+#include "..\..\renderer\MapRenderer.h"
+#include "TileIndexImpl.h"
 
 class ScanBoxTileRendererImpl : public ScanBox {
 
@@ -213,6 +215,46 @@ bool TileRenderer::getVisibleTiles( TileSet *pTileSet )
 void TileRenderer::releaseTiles( TileSet *pTileSet )
 {
 	pTileSet->releaseTiles();
+}
+
+long TileRenderer::getMinFade( MapTile *pTile, int proxyLevel )
+{
+	long minFade = MapRenderer::frameTime - 50;
+	/* check children for grandparent, parent or current */
+	if (proxyLevel <= 0) {
+		for (int c = 0; c < 4; c++) {
+			MapTile *ci = pTile->pNode->child(c);
+			if (ci == NULL)
+				continue;
+
+			if (ci->fadeTime > 0 && ci->fadeTime < minFade)
+				minFade = ci->fadeTime;
+
+			/* when drawing the parent of the current level
+				* we also check if the children of current level
+				* are visible */
+			if (proxyLevel >= -1) {
+				long m = getMinFade(ci, proxyLevel - 1);
+				if (m < minFade)
+					minFade = m;
+			}
+		}
+	}
+
+		/* check parents for child, current or parent */
+		TileNode *p = (TileNode *)pTile->pNode->pParent;
+
+		for (int i = proxyLevel; i >= -1; i--) {
+			if (p == NULL)
+				break;
+
+			if (p->item != NULL && p->item->fadeTime > 0 && p->item->fadeTime < minFade)
+				minFade = p->item->fadeTime;
+
+			p = (TileNode *)p->pParent;
+		}
+
+		return minFade;
 }
 
 void ScanBoxTileRendererImpl::setVisible( int y, int x1, int x2 )

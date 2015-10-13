@@ -125,13 +125,13 @@ void RenderBuckets::initRenderer()
 {
 	throw std::exception("The method or operation is not implemented.");
 
-// 	LineBucket::Renderer.init();
-// 	LineTexBucket::Renderer.init();
-// 	PolygonBucket::Renderer.init();
-// 	TextureBucket::Renderer.init();
-// 	BitmapBucket::Renderer.init();
-// 	MeshBucket::Renderer.init();
-// 	HairLineBucket::Renderer.init();
+// 	LineBucket::Renderer::init();
+// 	LineTexBucket::Renderer::init();
+// 	PolygonBucket::Renderer::init();
+// 	TextureBucket::Renderer::init();
+// 	BitmapBucket::Renderer::init();
+// 	MeshBucket::Renderer::init();
+// 	HairLineBucket::Renderer::init();
 }
 
 short RenderBuckets::s = (short) (Tile::SIZE * COORD_SCALE);

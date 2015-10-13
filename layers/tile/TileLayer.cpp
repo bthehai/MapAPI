@@ -20,15 +20,23 @@ TileLayer::TileLayer( Map *pMap, TileManager *pTileManager, TileRenderer *pRende
 
 TileLayer::~TileLayer()
 {
+	if (m_pTileManager != NULL) {
+		delete m_pTileManager;
+		m_pTileManager = NULL;
+	}
 
+	if (m_pRenderer != NULL) {
+		delete m_pRenderer;
+		m_pRenderer = NULL;
+	}
 }
 
 void TileLayer::setRenderer( TileRenderer *pRenderer )
 {
-// 	if (m_pRenderer != NULL) {
-// 		delete m_pRenderer;
-// 		m_pRenderer = NULL;
-// 	}
+	if (m_pRenderer != NULL) {
+		delete m_pRenderer;
+		m_pRenderer = NULL;
+	}
 	pRenderer->setTileManager(m_pTileManager);
 	m_pRenderer = pRenderer;
 }

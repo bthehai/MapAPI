@@ -20,6 +20,8 @@ int MapRenderer::m_nQuadVerticesID = 0;
 int MapRenderer::m_nQuadIndicesID = 0;
 NativeBufferPool* MapRenderer::m_pBufferPool = NULL;
 
+long MapRenderer::frameTime = 0;
+
 
 MapRenderer::MapRenderer( Map *pMap )
 	: m_pMap(pMap)

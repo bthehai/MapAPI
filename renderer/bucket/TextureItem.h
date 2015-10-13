@@ -54,6 +54,7 @@ public:
 	bool repeat;
 
 	int offset;
+	int indices;
 
 	Bitmap* pBitmap;
 

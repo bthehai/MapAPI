@@ -3,8 +3,7 @@
 #include "RenderBucket.h"
 #include "TextureItem.h"
 #include "..\GLShader.h"
-#include "..\GLState.h"
-#include "..\GLViewport.h"
+
 
 #define INDICES_PER_SPRITE 6
 #define VERTICES_PER_SPRITE 4
@@ -14,6 +13,9 @@
 #define TEXTURE_WIDTH 1024
 
 #define POOL_FILL 4
+
+class GLViewport;
+
 
 class TextureBucket : public RenderBucket {
 
@@ -33,57 +35,29 @@ protected:
 	virtual void clear();
 
 public:
+	TextureItem* getTextures();
+	void render(int offset, int numIndices);
+
+public:
 	static class Shader : public GLShader {
 	public:
 		int uMV, uProj, uScale, uTexSize, aPos, aTexCoord;
 		
 	public:
-		Shader() {
-			if (!create("texture_layer")) {
-				return;
-			}
-			uMV = getUniform("u_mv");
-			uProj = getUniform("u_proj");
-			uScale = getUniform("u_scale");
-			uTexSize = getUniform("u_div");
-			aPos = getAttrib("vertex");
-			aTexCoord = getAttrib("tex_coord");
-		}
+		Shader();
+		virtual ~Shader();
 
-		virtual bool useProgram() {
-			if (GLShader::useProgram()) {
-				GLState::enableVertexArrays(aPos, aTexCoord);
-				return true;
-			}
-			return false;
-		}
-
+	public:
+		virtual bool useProgram();
 	};
 
 	static Shader *pShader;
 
 	static class Renderer {
 	public:
-		static void init() {
-			pShader = new TextureBucket::Shader();
-			pPool->init(0);
-		}
+		static void init();
 
-		static RenderBucket* draw(RenderBucket *pRBucket, GLViewport *pViewport, float scale) {
-			GLState::test(false, false);
-			GLState::blend(true);
+		static RenderBucket* draw(RenderBucket *pRBucket, GLViewport *pViewport, float scale); 
 
-			pShader->useProgram();
-
-			TextureBucket *pTB = (TextureBucket *)pRBucket;
-			glUniform1f(pShader->uScale, pTB->fixed ? 1 / scale : 1);
-
-			pViewport->proj.setAsUniform(pShader->uProj);
-			pViewport->mvp.setAsUniform(pShader->uMV);
-
-			//MapRenderer::bindQ
-		}
 	};
-
-	
 };
