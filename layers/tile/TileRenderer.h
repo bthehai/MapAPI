@@ -34,7 +34,7 @@ public:
 	TileRenderer();
 	virtual ~TileRenderer();
 
-protected:
+public:
 	void setTileManager(TileManager *pTileManager);
 
 public:

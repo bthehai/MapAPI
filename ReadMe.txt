@@ -27,3 +27,8 @@
 - Pauseable extends Thread (Thread undefine, don't chosed thread class in unknown library(boost, lib c++...))
 - PasuableThread class: The method or operation is not implemented.
 
+20151013
+- Complete:
+	layers/tile
+	+ TileLayer
+

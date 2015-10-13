@@ -72,5 +72,10 @@ void PausableThread::afterRun()
 
 void PausableThread::notify()
 {
+	throw std::exception("The method or operation is not implemented.");
+}
 
+void PausableThread::start()
+{
+	throw std::exception("The method or operation is not implemented.");
 }

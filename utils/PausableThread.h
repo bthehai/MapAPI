@@ -24,7 +24,7 @@ public:
 	bool isInterrupted();
 
 	void notify();
-
+	void start();
 	
 public:
 	virtual void run();
