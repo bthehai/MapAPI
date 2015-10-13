@@ -31,4 +31,15 @@
 - Complete:
 	layers/tile
 	+ TileLayer
+	+ VectorTileRenderer
+Note:
+	Layer/tile
+	+ TileLayer
+	+ TileRenderer (.h, .cpp)
+	renderer/
+	+ MapRenderer.cpp
+	renderer/bucket
+	+ Them static class Renderer trong tung class bucket.
+	+ Cac chuc nang trong cac class Bucket chua hoan thanh.
+
 
